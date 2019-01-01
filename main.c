@@ -11,16 +11,9 @@ displayProcessTime(const char *msg)
 {
     sTimes stimes;
     clock_t clockTime;
-    static long clockTicks = 0;
 
     if (msg != NULL)
         printf("%s", msg);
-
-    if (clockTicks == 0) {
-        clockTicks = sysconf(_SC_CLK_TCK);
-        if(clockTicks == -1)
-            errnoExit("sysconf");
-    }
 
     stimes = getTimes();
 
